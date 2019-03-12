@@ -23,3 +23,4 @@
 
 	</table>
 </div>
+<p><a href = "<?=URL?>student/add">Add</a></p>
