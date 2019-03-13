@@ -1,26 +1,22 @@
 <div class="container">
 	<table border="1">
 		<tr>
-			<th>#</th>
-			<th>Naam</th>
+			<th>lijsten</th>
+			
 		</tr>
-		
+		 <?
 
-		<tr>
-			<td>99041392</td>
-			<td>Johan ter Wolde</td>
-		</tr>
-		<tr>
-			<td>99041393</td>
-			<td>Johan Vlemmix</td>
-		</tr>
-		<tr>
-			<td>99041394</td>
-			<td>Ben Vreemdeling</td>
-		</tr>
-		
-
+foreach ($lists as $list ) {
+	echo "<tr>";
+            echo "<td>" . $list['list_name']  . "</td>";
+            // echo "<td>" . $list['book_author']  . "</td>";
+            echo "<td class='center'>" . "<a href='". URL . "student/update/". $list['list_id'] ."'>bewerken</a></td>";
+            echo "<td class='center'>" . "<a href='" . URL . "student/delete/". $list['list_id'] ."'>verwijder</a></td>"; 
+           	echo "</tr>";  
+    echo "</tr>";
+}
+?>
 
 	</table>
 </div>
-<p><a href = "<?=URL?>student/add">Add</a></p>
+<p><a  class="btn btn-primary" href = "<?=URL?>student/add">voeg lijst toe</a></p>

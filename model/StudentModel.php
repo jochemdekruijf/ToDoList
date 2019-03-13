@@ -26,3 +26,24 @@ function saveTask($answers){
     $query->bindParam(":list", $_POST['list']);
     $query->execute();
 }
+
+function deleteList($id){
+    $db = openDatabaseConnection();
+
+    $sql = "DELETE FROM lists WHERE list_id = :id";
+    $query = $db->prepare($sql);
+    $query->bindParam(":id", $id);
+    $query->execute();
+}
+
+function updateList($list){
+
+$db = openDatabaseConnection();
+
+    $sql = "UPDATE lists SET list_name = :list WHERE list_id = :id ";
+    
+    $query = $db->prepare($sql);
+    $query->bindParam(":list", $list['boek']);
+    $query->bindParam(":id", $list['id']);
+    $query->execute();
+ }
