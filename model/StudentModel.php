@@ -36,6 +36,21 @@ function deleteList($id){
     $query->execute();
 }
 
+function getListById($id) 
+{
+    $db = openDatabaseConnection();
+
+    $sql = "SELECT * FROM lists where list_id = :id ";
+
+    $query = $db->prepare($sql);
+    $query->bindParam(":id", $id);
+    $query->execute();
+
+    $db = null;
+
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
+
 function updateList($list){
 
 $db = openDatabaseConnection();
@@ -43,7 +58,7 @@ $db = openDatabaseConnection();
     $sql = "UPDATE lists SET list_name = :list WHERE list_id = :id ";
     
     $query = $db->prepare($sql);
-    $query->bindParam(":list", $list['boek']);
+    $query->bindParam(":list", $list['list_name']);
     $query->bindParam(":id", $list['id']);
     $query->execute();
  }

@@ -1,9 +1,9 @@
 <p>pas gegevens aan</p>
 <fieldset>
-<form action="<?=URL?>book/saveBoek" method="post">
-   <label for="Name">boek:</label>
-    <input required type="text" name="boek" placeholder="boek" value="<?=$list['book_name']?>">
-     <input type="hidden" name="id" value="<?= $list['book_id'] ?>">
+<form action="<?=URL?>student/saveList" method="post">
+   <label for="Name">Lijstnaam:</label>
+    <input required type="text" name="list_name" placeholder="lijstnaam" value="<?=$list['list_name']?>">
+     <input type="hidden" name="id" value="<?= $list['list_id'] ?>">
     <input type="submit" name="submit" value="opslaan">
 </form>
 </fieldset>
