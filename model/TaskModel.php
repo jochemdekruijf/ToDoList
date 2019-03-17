@@ -1,10 +1,10 @@
 <?php
 
-function getAllLists() 
+function getAllTasks() 
 {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM lists";
+	$sql = "SELECT * FROM tasks";
 	$query = $db->prepare($sql);
 	$query->execute();
 
@@ -14,33 +14,33 @@ function getAllLists()
 }
 //INSERT INTO `lists`(`list_id`, `list_name`) VALUES (2,'testList')
 
-function saveLists($answers){
+function save(){
 
     $db = openDatabaseConnection();
-    $sql = "INSERT INTO `lists`(`list_id`, `list_name`) VALUES (:id,:list);";
+    $sql = "INSERT INTO `tasks`(`task_id`,`task_name`) VALUES (:id,:task);";
          
     //$sql = "INSERT INTO birthdays (name, day, month, year) VALUES (:name, :day, :month, :year);";
     
     $query = $db->prepare($sql);
     $query->bindParam(":id", $_POST['id']);
-    $query->bindParam(":list", $_POST['list']);
+    $query->bindParam(":task", $_POST['task']);
     $query->execute();
 }
 
-function deleteList($id){
+function deleteTask($id){
     $db = openDatabaseConnection();
 
-    $sql = "DELETE FROM lists WHERE list_id = :id";
+    $sql = "DELETE FROM tasks WHERE task_id = :id";
     $query = $db->prepare($sql);
     $query->bindParam(":id", $id);
     $query->execute();
 }
 
-function getListById($id) 
+function getTaskById($id) 
 {
     $db = openDatabaseConnection();
 
-    $sql = "SELECT * FROM lists where list_id = :id ";
+    $sql = "SELECT * FROM tasks where task_id = :id ";
 
     $query = $db->prepare($sql);
     $query->bindParam(":id", $id);
@@ -51,14 +51,14 @@ function getListById($id)
     return $query->fetch(PDO::FETCH_ASSOC);
 }
 
-function updateList($list){
+function updateTask($task){
 
 $db = openDatabaseConnection();
 
-    $sql = "UPDATE lists SET list_name = :list WHERE list_id = :id ";
+    $sql = "UPDATE tasks SET task_name = :task WHERE task_id = :id ";
     
     $query = $db->prepare($sql);
-    $query->bindParam(":list", $list['list_name']);
-    $query->bindParam(":id", $list['id']);
+    $query->bindParam(":task", $_POST['task']);
+    $query->bindParam(":id", $_POST['id']);
     $query->execute();
  }

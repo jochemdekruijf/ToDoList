@@ -12,5 +12,6 @@
 	<ul>
 		<li><a href="<?= URL ?>home/index">Home</a></li>
 		<li><a href="<?= URL ?>student/index">Lists</a></li>
+		<li><a href="<?= URL ?>task/index">task</a></li>
 	</ul>
 	</nav>

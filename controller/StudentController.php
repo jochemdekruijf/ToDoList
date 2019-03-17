@@ -15,7 +15,7 @@ function add(){
 }
 
 function save(){
-    $result = saveTask($_POST);
+    $result = saveLists($_POST);
     header('Location: '.URL."student/index");
 }
 
