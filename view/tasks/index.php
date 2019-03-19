@@ -7,6 +7,8 @@
 		 <?
 
 foreach ($tasks as $task ) {
+
+
 	echo "<tr>";
             echo "<td>" . $task['task_name']  . "</td>";
             // echo "<td>" . $list['book_author']  . "</td>";
@@ -19,4 +21,4 @@ foreach ($tasks as $task ) {
 
 	</table>
 </div>
-<p><a  class="btn btn-primary" href = "<?=URL?>task/add">voeg task toe</a></p>
+<p><a  class="btn btn-primary" href = "<?=URL?>task/add/<?= $id ?>">voeg task toe</a></p>

@@ -12,18 +12,33 @@ function getAllTasks()
 
 	return $query->fetchAll();
 }
+
+function getTasksById($id) 
+{
+    $db = openDatabaseConnection();
+
+    $sql = "SELECT * FROM tasks WHERE list_id = :id";
+    $query = $db->prepare($sql);
+    $query->bindParam(":id", $id);
+    $query->execute();
+
+    $db = null;
+
+    return $query->fetchAll();
+}
 //INSERT INTO `lists`(`list_id`, `list_name`) VALUES (2,'testList')
 
 function save(){
 
     $db = openDatabaseConnection();
-    $sql = "INSERT INTO `tasks`(`task_id`,`task_name`) VALUES (:id,:task);";
+    $sql = "INSERT INTO `tasks`(`task_id`,`task_name`,`list_id`) VALUES (:id,:task,:list_id);";
          
     //$sql = "INSERT INTO birthdays (name, day, month, year) VALUES (:name, :day, :month, :year);";
     
     $query = $db->prepare($sql);
     $query->bindParam(":id", $_POST['id']);
     $query->bindParam(":task", $_POST['task']);
+    $query->bindParam(":list_id", $_POST['list_id']);
     $query->execute();
 }
 

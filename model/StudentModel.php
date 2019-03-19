@@ -12,7 +12,7 @@ function getAllLists()
 
 	return $query->fetchAll();
 }
-//INSERT INTO `lists`(`list_id`, `list_name`) VALUES (2,'testList')
+
 
 function saveLists($answers){
 

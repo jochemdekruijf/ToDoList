@@ -2,6 +2,7 @@
 
 require(ROOT . "model/TaskModel.php");
 
+
 function index()
 {
  render("tasks/index", array(
@@ -9,9 +10,21 @@ function index()
 
 	 ));
 }
+function index2($id)
+{
+ render("tasks/index", array(
+    'tasks' => getTasksbyid($id),
+    'id' => $id,
 
-function add(){
-    render("tasks/add");
+   ));
+}
+
+function add($id){
+    render("tasks/add", [
+        'id' => $id,
+    ]);
+
+
 }
 
 function saveTask(){

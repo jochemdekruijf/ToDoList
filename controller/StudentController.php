@@ -5,7 +5,8 @@ require(ROOT . "model/StudentModel.php");
 function index()
 {
  render("2dolist/index", array(
-	'lists' => getAllLists()
+	'lists' => getAllLists($id),
+  'id' => $id
 
 	 ));
 }
