@@ -4,7 +4,7 @@ function getAllTasks()
 {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM tasks";
+	$sql = "SELECT * FROM tasks ORDER BY  task_id DESC";
 	$query = $db->prepare($sql);
 	$query->execute();
 

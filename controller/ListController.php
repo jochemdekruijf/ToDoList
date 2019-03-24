@@ -1,6 +1,6 @@
 <?php
 
-require(ROOT . "model/StudentModel.php");
+require(ROOT . "model/ListModel.php");
 
 function index()
 {
@@ -11,19 +11,28 @@ function index()
 	 ));
 }
 
+function indexASC()
+{
+ render("2dolist/index", array(
+  'lists' => getAllListsASC($id),
+  'id' => $id
+
+   ));
+}
+
 function add(){
     render("2dolist/add");
 }
 
 function save(){
     $result = saveLists($_POST);
-    header('Location: '.URL."student/index");
+    header('Location: '.URL."list/index");
 }
 
 function delete($id)
 {
     deleteList($id);
-    header('Location: '.URL."student/index");
+    header('Location: '.URL."list/index");
 }
 
 function update($id){
@@ -35,5 +44,5 @@ function update($id){
 function saveList($id)
 {
   updateList($_POST,$id);
- header("Location: ".URL. "student/index");
+ header("Location: ".URL. "list/index");
 }

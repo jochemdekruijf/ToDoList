@@ -4,13 +4,26 @@ function getAllLists()
 {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM lists";
+	$sql = "SELECT * FROM lists ORDER BY list_id  DESC";
 	$query = $db->prepare($sql);
 	$query->execute();
 
 	$db = null;
 
 	return $query->fetchAll();
+}
+
+function getAllListsASC() 
+{
+    $db = openDatabaseConnection();
+
+    $sql = "SELECT * FROM lists ORDER BY list_id  ASC";
+    $query = $db->prepare($sql);
+    $query->execute();
+
+    $db = null;
+
+    return $query->fetchAll();
 }
 
 
@@ -34,7 +47,14 @@ function deleteList($id){
     $query = $db->prepare($sql);
     $query->bindParam(":id", $id);
     $query->execute();
+
+    $sqlT = "DELETE FROM tasks WHERE list_id=:id";
+    $query = $db->prepare($sqlT);
+    $query->bindParam(":id", $id);
+    $query->execute();
+
 }
+
 
 function getListById($id) 
 {
